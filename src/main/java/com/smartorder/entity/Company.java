@@ -1,8 +1,7 @@
 package com.smartorder.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,7 +11,10 @@ import java.util.List;
 @Table(name="company")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Company {
+@SuperBuilder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+public class Company extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "company_id")

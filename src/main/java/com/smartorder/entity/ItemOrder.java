@@ -1,8 +1,10 @@
 package com.smartorder.entity;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
@@ -10,7 +12,9 @@ import javax.persistence.*;
 @Table(name="item_order")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class ItemOrder {
+@SuperBuilder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+public class ItemOrder extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "item_order_id")

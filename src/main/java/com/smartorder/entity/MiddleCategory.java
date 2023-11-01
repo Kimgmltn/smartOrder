@@ -1,8 +1,10 @@
 package com.smartorder.entity;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,7 +14,9 @@ import java.util.List;
 @Table(name="middle_category")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class MiddleCategory {
+@SuperBuilder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+public class MiddleCategory extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "middle_category_id")
