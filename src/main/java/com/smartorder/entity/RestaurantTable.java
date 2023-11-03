@@ -34,10 +34,4 @@ public class RestaurantTable extends BaseEntity {
     private Company company;
     @OneToMany(mappedBy = "table")
     private List<Orders> orders = new ArrayList<>();
-
-    public void addToCompany(Company company){
-        this.company = company;
-        company.getRestaurantTables().add(this);
-    }
-
 }
