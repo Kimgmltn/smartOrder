@@ -1,6 +1,7 @@
 package com.smartorder.entity;
 
-import lombok.Getter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -15,6 +16,9 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 @Getter
+@SuperBuilder(toBuilder = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class BaseEntity {
     @CreatedDate
     @Column(name = "created_date", updatable = false)
