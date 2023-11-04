@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +39,9 @@ public class Company extends BaseEntity{
     private List<MainCategory> mainCategories = new ArrayList<>();
 
     public void changeCompanyInfo(String companyName, String companyCode, String roadNameAddress, String lotNumberAddress) {
-        this.companyName = companyName;
-        this.companyCode = companyCode;
-        this.roadNameAddress = roadNameAddress;
-        this.lotNumberAddress = lotNumberAddress;
-    }
-
-    public void changeCompanyName(String companyName) {
-        this.changeCompanyInfo(companyName, this.companyCode, this.roadNameAddress, this.lotNumberAddress);
+        if (!ObjectUtils.isEmpty(companyName)) this.companyName = companyName;
+        if (!ObjectUtils.isEmpty(companyCode)) this.companyCode = companyCode;
+        if (!ObjectUtils.isEmpty(roadNameAddress)) this.roadNameAddress = roadNameAddress;
+        if (!ObjectUtils.isEmpty(lotNumberAddress)) this.lotNumberAddress = lotNumberAddress;
     }
 }

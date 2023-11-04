@@ -6,3 +6,15 @@ spring:
     properties:
       hibernate:
         format_sql : true
+  devtools:
+    add-properties: false
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    version: 1.0
+#    enabled: true
+
+#  api-docs:
+#    path: /swagger-ui.html
+#  packages-to-scan: com.smartorder.*
+

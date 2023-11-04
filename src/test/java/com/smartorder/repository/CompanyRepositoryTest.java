@@ -34,7 +34,7 @@ class CompanyRepositoryTest {
         companyRepository.save(company);
 
         Company find  = companyRepository.findByCompanyName("갈비대첩").get();
-        find.changeCompanyName("갈비대첩2");
+        find.changeCompanyInfo("갈비대첩2", null, null, null);
         companyRepository.save(find);
 
         Company find2 = companyRepository.findByCompanyName("갈비대첩2").get();

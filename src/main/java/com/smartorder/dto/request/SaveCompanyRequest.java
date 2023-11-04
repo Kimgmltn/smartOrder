@@ -1,7 +1,8 @@
 package com.smartorder.dto.request;
 
 
-import jakarta.validation.constraints.NotEmpty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,13 @@ import lombok.Setter;
 @Setter
 @Getter
 public class SaveCompanyRequest {
-    @NotEmpty
+    @NotBlank
+    @Schema(example = "회사명")
     private String companyName;
-    private String CompanyCode;
+    @Schema(example = "KP")
+    private String companyCode;
+    @Schema(example = "도로명 주소")
     private String roadNameAddress;
+    @Schema(example = "지번 주소")
     private String lotNumberAddress;
 }
