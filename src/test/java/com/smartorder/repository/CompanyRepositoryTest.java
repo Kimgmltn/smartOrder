@@ -5,11 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @DataJpaTest
 //@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
@@ -38,7 +34,7 @@ class CompanyRepositoryTest {
         companyRepository.save(company);
 
         Company find  = companyRepository.findByCompanyName("갈비대첩").get();
-        find.setCompanyName("갈비대첩2");
+        find.changeCompanyName("갈비대첩2");
         companyRepository.save(find);
 
         Company find2 = companyRepository.findByCompanyName("갈비대첩2").get();

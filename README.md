@@ -3,8 +3,8 @@
 가게를 위한 웹 기반 스마트 오더 시스템
 
 ### skill
-* Java 11
-* Springboot 2.7
+* Java 17
+* Springboot 3.1
 * Spring Data Jpa
 * Jooq
 

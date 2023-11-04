@@ -1,9 +1,12 @@
 package com.smartorder.entity;
 
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,19 +36,14 @@ public class Company extends BaseEntity{
     @OneToMany(mappedBy = "company")
     private List<MainCategory> mainCategories = new ArrayList<>();
 
-    public void setCompanyName(String companyName) {
+    public void changeCompanyInfo(String companyName, String companyCode, String roadNameAddress, String lotNumberAddress) {
         this.companyName = companyName;
-    }
-
-    public void setRoadNameAddress(String roadNameAddress) {
+        this.companyCode = companyCode;
         this.roadNameAddress = roadNameAddress;
-    }
-
-    public void setLotNumberAddress(String lotNumberAddress) {
         this.lotNumberAddress = lotNumberAddress;
     }
 
-    public void setCompanyCode(String companyCode) {
-        this.companyCode = companyCode;
+    public void changeCompanyName(String companyName) {
+        this.changeCompanyInfo(companyName, this.companyCode, this.roadNameAddress, this.lotNumberAddress);
     }
 }
