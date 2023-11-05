@@ -32,6 +32,7 @@ dependencies {
     annotationProcessor "jakarta.annotation:jakarta.annotation-api"
     annotationProcessor "jakarta.persistence:jakarta.persistence-api"
     // querydsl 끝
+//    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
@@ -49,9 +50,9 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+// querydsl QClass 파일 생성 위치 지정
 def generated = 'src/main/generated'
 
-// querydsl QClass 파일 생성 위치 지정
 tasks.withType(JavaCompile).configureEach {
     options.getGeneratedSourceOutputDirectory().set(file(generated))
 }
