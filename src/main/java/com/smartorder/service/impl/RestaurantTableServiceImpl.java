@@ -5,7 +5,6 @@ import com.smartorder.entity.Company;
 import com.smartorder.entity.RestaurantTable;
 import com.smartorder.enums.TableStatus;
 import com.smartorder.repository.RestaurantTableRepository;
-import com.smartorder.service.CompanyService;
 import com.smartorder.service.RestaurantTableService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,13 +14,11 @@ import org.springframework.stereotype.Service;
 public class RestaurantTableServiceImpl implements RestaurantTableService {
 
     private final RestaurantTableRepository tableRepository;
-    private final CompanyService companyService;
 
     @Override
     public void saveTable(SaveTableRequest request) {
-        Company company = companyService.findById(request.getCompanyId());
         RestaurantTable table = RestaurantTable.builder()
-                .company(company)
+                .company(new Company(request.getCompanyId()))
                 .tableNo(request.getTableNo())
                 .tableStatus(TableStatus.EMPTY)
                 .build();

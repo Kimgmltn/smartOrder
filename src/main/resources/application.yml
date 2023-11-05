@@ -5,15 +5,27 @@ spring:
     generate-ddl: true
     properties:
       hibernate:
+#        show_sql : true
         format_sql : true
+    show-sql: false
+
   devtools:
     add-properties: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
     version: 1.0
-#    enabled: true
 
   api-docs:
     path: /swagger-ui.html
+
 

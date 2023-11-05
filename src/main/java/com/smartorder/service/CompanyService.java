@@ -9,6 +9,4 @@ public interface CompanyService {
     void saveCompany(SaveCompanyRequest request);
 
     void updateCompany(UpdateCompanyRequest request);
-
-    Company findById(Long companyId);
 }

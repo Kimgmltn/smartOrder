@@ -31,4 +31,7 @@ public class Orders extends BaseEntity {
     @OneToMany(mappedBy = "orders")
     private List<ItemOrder> itemOrders = new ArrayList<>();
 
+    public Orders(Long orderId) {
+        this.orderId = orderId;
+    }
 }

@@ -33,4 +33,8 @@ public class Item extends BaseEntity{
     private MiddleCategory middleCategory;
     @OneToMany(mappedBy = "item")
     private List<ItemOrder> itemOrders = new ArrayList<>();
+
+    public Item(Long itemId) {
+        this.itemId = itemId;
+    }
 }

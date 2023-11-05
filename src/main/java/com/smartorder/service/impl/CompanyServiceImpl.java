@@ -32,9 +32,4 @@ public class CompanyServiceImpl implements CompanyService {
         company.changeCompanyInfo(request.getCompanyName(), request.getCompanyCode(),request.getRoadNameAddress(), request.getLotNumberAddress());
         companyRepository.save(company);
     }
-
-    @Override
-    public Company findById(Long companyId) {
-        return companyRepository.findById(companyId).orElseThrow(() -> new CompanyException("등록되지 않은 회사입니다."));
-    }
 }

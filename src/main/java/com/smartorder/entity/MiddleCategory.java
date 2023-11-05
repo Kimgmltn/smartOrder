@@ -31,4 +31,8 @@ public class MiddleCategory extends BaseEntity {
     private MainCategory mainCategory;
     @OneToMany(mappedBy = "middleCategory")
     private List<Item> items = new ArrayList<>();
+
+    public MiddleCategory(Long middleCategoryId) {
+        this.middleCategoryId = middleCategoryId;
+    }
 }

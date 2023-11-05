@@ -34,4 +34,8 @@ public class RestaurantTable extends BaseEntity {
     private Company company;
     @OneToMany(mappedBy = "table")
     private List<Orders> orders = new ArrayList<>();
+
+    public RestaurantTable(Long tableId) {
+        this.tableId = tableId;
+    }
 }

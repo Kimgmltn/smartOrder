@@ -43,4 +43,8 @@ public class Company extends BaseEntity{
         if (!ObjectUtils.isEmpty(roadNameAddress)) this.roadNameAddress = roadNameAddress;
         if (!ObjectUtils.isEmpty(lotNumberAddress)) this.lotNumberAddress = lotNumberAddress;
     }
+
+    public Company(Long companyId) {
+        this.companyId = companyId;
+    }
 }
