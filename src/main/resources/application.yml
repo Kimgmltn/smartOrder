@@ -14,7 +14,6 @@ springdoc:
     version: 1.0
 #    enabled: true
 
-#  api-docs:
-#    path: /swagger-ui.html
-#  packages-to-scan: com.smartorder.*
+  api-docs:
+    path: /swagger-ui.html
 
