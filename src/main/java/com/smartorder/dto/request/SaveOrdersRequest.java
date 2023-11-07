@@ -14,9 +14,12 @@ import java.util.List;
 @NoArgsConstructor
 public class SaveOrdersRequest {
     private Long tableId;
-    private Integer total_price;
     private List<ItemOrderRequest> itemOrderRequests;
 
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Getter
+    @Setter
     public static class ItemOrderRequest{
         private Long itemId;
         private Integer quantity;
