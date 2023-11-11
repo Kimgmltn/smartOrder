@@ -1,8 +1,8 @@
-package com.smartorder.restController;
+package com.smartorder.company.controller;
 
-import com.smartorder.dto.request.SaveCompanyRequest;
-import com.smartorder.dto.request.UpdateCompanyRequest;
-import com.smartorder.service.CompanyService;
+import com.smartorder.company.controller.request.SaveCompanyRequest;
+import com.smartorder.company.controller.request.UpdateCompanyRequest;
+import com.smartorder.company.service.CompanyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class CompanyController {
     @Operation(summary = "회사 정보 수정")
     @PatchMapping
     public ResponseEntity<Void> updateCompany(@RequestBody UpdateCompanyRequest request){
-        companyService.updateCompany(request);
+//        companyService.updateCompany(request);
         return ResponseEntity.ok().build();
     }
 

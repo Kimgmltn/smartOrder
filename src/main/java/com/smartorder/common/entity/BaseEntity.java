@@ -1,4 +1,4 @@
-package com.smartorder.entity;
+package com.smartorder.common.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

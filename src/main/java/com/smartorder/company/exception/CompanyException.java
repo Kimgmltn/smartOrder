@@ -1,4 +1,4 @@
-package com.smartorder.exception;
+package com.smartorder.company.exception;
 
 public class CompanyException extends RuntimeException{
     public CompanyException() {

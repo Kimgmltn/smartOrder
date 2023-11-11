@@ -1,5 +1,7 @@
 package com.smartorder.entity;
 
+import com.smartorder.common.entity.BaseEntity;
+import com.smartorder.company.entity.Company;
 import com.smartorder.enums.TableStatus;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

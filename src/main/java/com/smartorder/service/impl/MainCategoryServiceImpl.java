@@ -1,7 +1,7 @@
 package com.smartorder.service.impl;
 
 import com.smartorder.dto.request.SaveMainCategoryRequest;
-import com.smartorder.entity.Company;
+import com.smartorder.company.entity.Company;
 import com.smartorder.entity.MainCategory;
 import com.smartorder.repository.MainCategoryRepository;
 import com.smartorder.service.MainCategoryService;
@@ -16,10 +16,10 @@ public class MainCategoryServiceImpl implements MainCategoryService {
 
     @Override
     public void saveMainCategory(SaveMainCategoryRequest request) {
-        MainCategory mainCategory = MainCategory.builder()
-                .company(new Company(request.getCompanyId()))
-                .mainCategoryName(request.getMainCategoryName())
-                .build();
-        mainCategoryRepository.save(mainCategory);
+//        MainCategory mainCategory = MainCategory.builder()
+//                .company(new Company(request.getCompanyId()))
+//                .mainCategoryName(request.getMainCategoryName())
+//                .build();
+//        mainCategoryRepository.save(mainCategory);
     }
 }

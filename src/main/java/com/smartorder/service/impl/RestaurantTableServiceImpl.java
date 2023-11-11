@@ -1,7 +1,7 @@
 package com.smartorder.service.impl;
 
 import com.smartorder.dto.request.SaveTableRequest;
-import com.smartorder.entity.Company;
+import com.smartorder.company.entity.Company;
 import com.smartorder.entity.RestaurantTable;
 import com.smartorder.enums.TableStatus;
 import com.smartorder.repository.RestaurantTableRepository;
@@ -17,11 +17,11 @@ public class RestaurantTableServiceImpl implements RestaurantTableService {
 
     @Override
     public void saveTable(SaveTableRequest request) {
-        RestaurantTable table = RestaurantTable.builder()
+        /*RestaurantTable table = RestaurantTable.builder()
                 .company(new Company(request.getCompanyId()))
                 .tableNo(request.getTableNo())
                 .tableStatus(TableStatus.EMPTY)
                 .build();
-        tableRepository.save(table);
+        tableRepository.save(table);*/
     }
 }
