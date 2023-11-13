@@ -1,6 +1,7 @@
 package com.smartorder.entity;
 
 import com.smartorder.common.entity.BaseEntity;
+import com.smartorder.restaurantTable.entity.RestaurantTable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

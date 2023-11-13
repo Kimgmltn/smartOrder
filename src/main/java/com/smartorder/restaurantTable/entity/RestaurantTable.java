@@ -1,8 +1,10 @@
-package com.smartorder.entity;
+package com.smartorder.restaurantTable.entity;
 
 import com.smartorder.common.entity.BaseEntity;
 import com.smartorder.company.entity.Company;
+import com.smartorder.entity.Orders;
 import com.smartorder.enums.TableStatus;
+import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -23,13 +25,9 @@ public class RestaurantTable extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "table_id")
-    private Long tableId;
+    private Long id;
     @Column(name = "table_no")
     private String tableNo;
-    @Column(name="table_status")
-    @Enumerated(EnumType.STRING)
-    private TableStatus tableStatus;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="company_id")
@@ -38,6 +36,13 @@ public class RestaurantTable extends BaseEntity {
     private List<Orders> orders = new ArrayList<>();
 
     public RestaurantTable(Long tableId) {
-        this.tableId = tableId;
+        this.id = tableId;
+    }
+
+    public static RestaurantTable create(Long companyId, String tableNo) {
+        return RestaurantTable.builder()
+                .tableNo(tableNo)
+                .company(new Company(companyId))
+                .build();
     }
 }

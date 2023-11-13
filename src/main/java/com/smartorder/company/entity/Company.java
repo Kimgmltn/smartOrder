@@ -4,7 +4,7 @@ import com.smartorder.common.entity.BaseEntity;
 import com.smartorder.company.controller.request.SaveCompanyRequest;
 import com.smartorder.company.controller.request.UpdateCompanyRequest;
 import com.smartorder.entity.MainCategory;
-import com.smartorder.entity.RestaurantTable;
+import com.smartorder.restaurantTable.entity.RestaurantTable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -37,6 +37,9 @@ public class Company extends BaseEntity {
     @OneToMany(mappedBy = "company")
     private List<MainCategory> mainCategories = new ArrayList<>();
 
+    public Company(Long companyId) {
+        this.id = companyId;
+    }
 
     public static Company createCompany(SaveCompanyRequest request) {
         return Company.builder()
@@ -52,4 +55,5 @@ public class Company extends BaseEntity {
                 .roadNameAddress(request.getRoadNameAddress())
                 .build();
     }
+
 }

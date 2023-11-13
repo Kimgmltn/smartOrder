@@ -1,7 +1,7 @@
 package com.smartorder.restController;
 
-import com.smartorder.dto.request.SaveTableRequest;
-import com.smartorder.service.RestaurantTableService;
+import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
+import com.smartorder.restaurantTable.service.RestaurantTableService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +19,8 @@ public class RestaurantTableController {
 
     @Operation(summary = "테이블 등록")
     @PostMapping
-    public ResponseEntity<Void> saveTable(SaveTableRequest request) {
-        restaurantTableService.saveTable(request);
+    public ResponseEntity<Void> saveTable(SaveTablesRequest request) {
+        restaurantTableService.saveTables(request);
         return ResponseEntity.ok().build();
     }
 }

@@ -12,12 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyJpaRepository companyRepository;
 
+    @Transactional
     @Override
     public SaveCompanyResponse saveCompany(SaveCompanyRequest request){
         Company company = Company.createCompany(request);
@@ -26,6 +27,7 @@ public class CompanyServiceImpl implements CompanyService {
         return SaveCompanyResponse.fromEntityToResponse(savedCompany);
     }
 
+    @Transactional
     @Override
     public UpdateCompanyResponse updateCompany(UpdateCompanyRequest request) {
         Company company = Company.updateCompany(request);
