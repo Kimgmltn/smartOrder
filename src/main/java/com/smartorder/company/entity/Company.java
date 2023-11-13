@@ -1,9 +1,9 @@
 package com.smartorder.company.entity;
 
+import com.smartorder.category.entity.Category;
 import com.smartorder.common.entity.BaseEntity;
 import com.smartorder.company.controller.request.SaveCompanyRequest;
 import com.smartorder.company.controller.request.UpdateCompanyRequest;
-import com.smartorder.entity.MainCategory;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -35,7 +35,7 @@ public class Company extends BaseEntity {
     @OneToMany(mappedBy = "company")
     private List<RestaurantTable> restaurantTables = new ArrayList<>();
     @OneToMany(mappedBy = "company")
-    private List<MainCategory> mainCategories = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 
     public Company(Long companyId) {
         this.id = companyId;

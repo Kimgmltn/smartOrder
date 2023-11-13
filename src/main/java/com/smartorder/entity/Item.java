@@ -1,6 +1,7 @@
 package com.smartorder.entity;
 
 
+import com.smartorder.category.entity.Category;
 import com.smartorder.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -30,8 +31,8 @@ public class Item extends BaseEntity {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "middle_category_id")
-    private MiddleCategory middleCategory;
+    @JoinColumn(name = "category_id")
+    private Category category;
     @OneToMany(mappedBy = "item")
     private List<ItemOrder> itemOrders = new ArrayList<>();
 
