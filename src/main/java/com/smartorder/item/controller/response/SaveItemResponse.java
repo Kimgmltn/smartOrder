@@ -1,4 +1,4 @@
-package com.smartorder.dto.request;
+package com.smartorder.item.controller.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SaveItemRequest {
-    private Long middleCategoryId;
-    private String itemName;
-    private Integer price;
+public class SaveItemResponse {
+    private String result;
 }

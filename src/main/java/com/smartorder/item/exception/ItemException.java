@@ -1,4 +1,4 @@
-package com.smartorder.exception;
+package com.smartorder.item.exception;
 
 public class ItemException extends RuntimeException{
     public ItemException() {

@@ -5,6 +5,7 @@ import com.smartorder.company.controller.request.UpdateCompanyRequest;
 import com.smartorder.company.controller.response.SaveCompanyResponse;
 import com.smartorder.company.controller.response.UpdateCompanyResponse;
 import com.smartorder.company.entity.Company;
+import com.smartorder.company.exception.CompanyException;
 import com.smartorder.company.repository.CompanyJpaRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -86,5 +87,16 @@ class CompanyServiceImplTest {
         assertThat(updateCompanyResponse.getCompanyId()).isEqualTo(savedCompany.getCompanyId());
         assertThat(updateCompanyResponse.getCompanyName()).isEqualTo(updateRequest.getCompanyName());
         assertThat(updateCompanyResponse.getRoadNameAddress()).isEqualTo(updateRequest.getRoadNameAddress());
+    }
+
+    @DisplayName("존재하지 않는 companyId일 경우 CompanyException으로 던진다.")
+    @Test
+    void test() {
+        //given
+        Long companyId = 2L;
+
+        //when
+        //then
+        assertThrows(CompanyException.class, () -> companyService.findById(companyId));
     }
 }
