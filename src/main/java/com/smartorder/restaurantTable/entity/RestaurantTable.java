@@ -2,9 +2,7 @@ package com.smartorder.restaurantTable.entity;
 
 import com.smartorder.common.entity.BaseEntity;
 import com.smartorder.company.entity.Company;
-import com.smartorder.entity.Orders;
-import com.smartorder.enums.TableStatus;
-import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
+import com.smartorder.orders.entity.Orders;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

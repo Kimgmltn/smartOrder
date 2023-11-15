@@ -3,7 +3,7 @@ package com.smartorder.item.entity;
 
 import com.smartorder.category.entity.Category;
 import com.smartorder.common.entity.BaseEntity;
-import com.smartorder.entity.ItemOrder;
+import com.smartorder.itemOrder.entity.ItemOrder;
 import com.smartorder.item.controller.request.SaveItemRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

@@ -1,6 +1,8 @@
-package com.smartorder.entity;
+package com.smartorder.orders.entity;
 
 import com.smartorder.common.entity.BaseEntity;
+import com.smartorder.itemOrder.entity.ItemOrder;
+import com.smartorder.orders.enums.OrderStatus;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -26,11 +28,14 @@ public class Orders extends BaseEntity {
 
     @Column(name="total_price")
     private Integer totalPrice;
+    @Enumerated(value = EnumType.STRING)
+    @Column(name="order_status")
+    private OrderStatus orderStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="table_id")
     private RestaurantTable table;
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
     private List<ItemOrder> itemOrders = new ArrayList<>();
 
     public Orders(Long orderId) {

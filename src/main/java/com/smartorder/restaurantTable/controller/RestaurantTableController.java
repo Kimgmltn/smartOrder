@@ -1,4 +1,4 @@
-package com.smartorder.restController;
+package com.smartorder.restaurantTable.controller;
 
 import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
 import com.smartorder.restaurantTable.service.RestaurantTableService;

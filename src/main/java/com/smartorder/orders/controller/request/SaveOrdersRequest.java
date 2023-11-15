@@ -1,6 +1,5 @@
-package com.smartorder.dto.request;
+package com.smartorder.orders.controller.request;
 
-import com.smartorder.entity.ItemOrder;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

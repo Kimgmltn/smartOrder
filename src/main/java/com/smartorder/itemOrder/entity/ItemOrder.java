@@ -1,7 +1,8 @@
-package com.smartorder.entity;
+package com.smartorder.itemOrder.entity;
 
 import com.smartorder.common.entity.BaseEntity;
 import com.smartorder.item.entity.Item;
+import com.smartorder.orders.entity.Orders;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
