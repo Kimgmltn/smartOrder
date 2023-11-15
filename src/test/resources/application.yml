@@ -5,21 +5,18 @@ spring:
     generate-ddl: true
     properties:
       hibernate:
-        show_sql: true
         format_sql : true
+#        show_sql: true
+    show-sql: true
 
-  devtools:
-    add-properties: false
-
-  h2:
-    console:
-      enabled: true
+  output:
+    ansi:
+      enabled: always
 
 logging:
   level:
     org:
       hibernate:
-        type:
-          descriptor:
-            sql: trace
+        SQL: DEBUG
+        type: TRACE
 

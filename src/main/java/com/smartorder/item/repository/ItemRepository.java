@@ -3,5 +3,9 @@ package com.smartorder.item.repository;
 import com.smartorder.item.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface ItemRepository extends JpaRepository<Item, Long> {
+
+    Optional<Item> findByItemNameAndCategory_Id(String itemName, Long categoryId);
 }
