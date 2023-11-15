@@ -29,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
     public SaveCategoryResponse saveCategories(SaveCategoryRequest request) {
         Company company = companyService.findById(request.getCompanyId());
         Long companyId = company.getId();
-        String text = "메뉴 {count}개가 등록되었습니다.";
+        String text = "대분류 {count}개가 등록되었습니다.";
         List<Category> categories = request.getCategoryNames().stream().map(name -> Category.create(companyId, name)).collect(Collectors.toList());
         List<Category> savedCategories = categoryRepository.saveAll(categories);
         String replace = text.replace("{count}", String.valueOf(savedCategories.size()));
@@ -37,9 +37,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category findByCategoryIdAndCompanyId(Long categoryId, Long companyId) {
-//        Company company = companyService.findById(companyId);
-        Optional<Category> category = categoryRepository.findByCompany_IdAndId(companyId, categoryId);
+    public Category findByIdAndCompanyId(Long categoryId, Long companyId) {
+        Optional<Category> category = categoryRepository.findByIdAndCompany_Id(categoryId, companyId);
         if (!category.isPresent()) {
             throw new CategoryException("해당 회사에 등록된 카테고리가 없습니다.");
         }
@@ -48,7 +47,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category findByCategoryNameAndCompanyId(String categoryName, Long companyId) {
-        Optional<Category> category = categoryRepository.findByCategoryNameAndCompany(categoryName, companyId);
+        Optional<Category> category = categoryRepository.findByCategoryNameAndCompany_Id(categoryName, companyId);
         if (!category.isPresent()) {
             throw new CategoryException("해당 회사에 등록된 카테고리가 없습니다.");
         }

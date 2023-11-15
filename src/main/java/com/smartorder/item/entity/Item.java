@@ -4,6 +4,7 @@ package com.smartorder.item.entity;
 import com.smartorder.category.entity.Category;
 import com.smartorder.common.entity.BaseEntity;
 import com.smartorder.entity.ItemOrder;
+import com.smartorder.item.controller.request.SaveItemRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class Item extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "item_id")
-    private Long itemId;
+    private Long id;
     @Column(name = "item_name")
     private String itemName;
     @Column(name="price")
@@ -38,6 +39,14 @@ public class Item extends BaseEntity {
     private List<ItemOrder> itemOrders = new ArrayList<>();
 
     public Item(Long itemId) {
-        this.itemId = itemId;
+        this.id = itemId;
+    }
+
+    public static Item create(Long categoryId, SaveItemRequest.SaveItem item) {
+        return Item.builder()
+                .category(new Category(categoryId))
+                .itemName(item.getItemName())
+                .price(item.getPrice())
+                .build();
     }
 }

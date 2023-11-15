@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SaveItemRequest {
+    private Long companyId;
     private Long categoryId;
     private List<SaveItem> items;
 

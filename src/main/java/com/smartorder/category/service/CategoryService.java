@@ -3,7 +3,6 @@ package com.smartorder.category.service;
 import com.smartorder.category.controller.request.SaveCategoryRequest;
 import com.smartorder.category.controller.response.SaveCategoryResponse;
 import com.smartorder.category.entity.Category;
-import org.springframework.data.jpa.repository.Query;
 
 public interface CategoryService {
 
@@ -11,5 +10,5 @@ public interface CategoryService {
 
     Category findByCategoryNameAndCompanyId(String categoryName, Long companyId);
 
-    Category findByCategoryIdAndCompanyId(Long categoryId, Long companyId);
+    Category findByIdAndCompanyId(Long categoryId, Long companyId);
 }

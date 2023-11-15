@@ -1,16 +1,16 @@
 package com.smartorder.category.repository;
 
 import com.smartorder.category.entity.Category;
-import com.smartorder.company.entity.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    Optional<Category> findByCategoryNameAndCompany(String categoryName, Long companyId);
+    Optional<Category> findByCategoryNameAndCompany_Id(String categoryName, Long companyId);
 
-    Optional<Category> findByCompany_IdAndId(Long companyId, Long categoryId);
+    Optional<Category> findByIdAndCompany_Id(Long categoryId, Long companyId);
 
 }

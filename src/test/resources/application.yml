@@ -5,8 +5,21 @@ spring:
     generate-ddl: true
     properties:
       hibernate:
+        show_sql: true
         format_sql : true
+
+  devtools:
+    add-properties: false
+
   h2:
     console:
       enabled: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
 
