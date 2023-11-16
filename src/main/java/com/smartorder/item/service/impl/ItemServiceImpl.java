@@ -10,6 +10,7 @@ import com.smartorder.item.repository.ItemRepository;
 import com.smartorder.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,12 +18,14 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
     private final CategoryService categoryService;
 
     @Override
+    @Transactional
     public SaveItemResponse saveItems(SaveItemRequest request) {
         Category category = categoryService.findByIdAndCompanyId(request.getCategoryId(), request.getCompanyId());
         Long categoryId = category.getId();
@@ -42,5 +45,14 @@ public class ItemServiceImpl implements ItemService {
             throw new ItemException("해당 아이템이 없습니다.");
         }
         return item.get();
+    }
+
+    @Override
+    public List<Item> findByCompanyIdAndItemIds(Long companyId, List<Long> itemIds) {
+        List<Item> items = itemRepository.findByCompanyIdAndItemIds(companyId, itemIds);
+        if(items.isEmpty()){
+            throw new ItemException("아이템이 존재하지 않습니다.");
+        }
+        return items;
     }
 }

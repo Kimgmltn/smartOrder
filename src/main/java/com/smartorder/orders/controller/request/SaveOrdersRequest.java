@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SaveOrdersRequest {
+    private Long companyId;
     private Long tableId;
     private List<ItemOrderRequest> itemOrderRequests;
 

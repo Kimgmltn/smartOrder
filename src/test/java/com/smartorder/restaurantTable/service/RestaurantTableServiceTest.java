@@ -67,5 +67,33 @@ class RestaurantTableServiceTest {
         Assertions.assertThrows(RestaurantTableException.class, () -> restaurantTableService.findByCompanyIdAndTableNo(company.getCompanyId(), "11"));
     }
 
+    @DisplayName("회사ID와 테이블Id를 가지고 해당 테이블을 찾을 수 있다.")
+    @Test
+    void findByCompanyIdAndTableId() {
+        //given
+        SaveCompanyResponse company = companyService.saveCompany(new SaveCompanyRequest("갈비", "도로명주소"));
+        SaveTablesRequest saveTableRequest = new SaveTablesRequest(company.getCompanyId(), List.of("1","2","3"));
+        restaurantTableService.saveTables(saveTableRequest);
+
+        //when
+        RestaurantTable response = restaurantTableService.findByCompanyIdAndTableId(company.getCompanyId(), 1L);
+
+        //then
+        assertThat(response).isNotNull();
+    }
+
+    @DisplayName("회사에 해당 테이블Id가 없으면 Error가 발생한다.")
+    @Test
+    void exceptionByNoTableId() {
+        //given
+        SaveCompanyResponse company = companyService.saveCompany(new SaveCompanyRequest("갈비", "도로명주소"));
+        SaveTablesRequest saveTableRequest = new SaveTablesRequest(company.getCompanyId(), List.of("1","2","3"));
+        restaurantTableService.saveTables(saveTableRequest);
+
+        //when
+        //then
+        Assertions.assertThrows(RestaurantTableException.class, () -> restaurantTableService.findByCompanyIdAndTableId(company.getCompanyId(), 121L));
+    }
+
 
 }

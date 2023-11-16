@@ -9,4 +9,6 @@ public interface RestaurantTableService {
     SaveTablesResponse saveTables(SaveTablesRequest request);
 
     RestaurantTable findByCompanyIdAndTableNo(Long companyId, String tableNo);
+
+    RestaurantTable findByCompanyIdAndTableId(Long companyId, Long tableId);
 }

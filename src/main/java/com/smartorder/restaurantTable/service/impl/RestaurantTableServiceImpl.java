@@ -42,4 +42,13 @@ public class RestaurantTableServiceImpl implements RestaurantTableService {
         }
         return table.get();
     }
+
+    @Override
+    public RestaurantTable findByCompanyIdAndTableId(Long companyId, Long tableId) {
+        Optional<RestaurantTable> table = tableRepository.findByCompany_IdAndId(companyId, tableId);
+        if (!table.isPresent()) {
+            throw new RestaurantTableException("존재하지 않는 테이블입니다.");
+        }
+        return table.get();
+    }
 }

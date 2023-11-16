@@ -57,7 +57,7 @@ class OrdersServiceTest {
 
         SaveOrdersRequest.ItemOrderRequest itemOrder1 = new SaveOrdersRequest.ItemOrderRequest(findItem1.getId(), 2);
         SaveOrdersRequest.ItemOrderRequest itemOrder2 = new SaveOrdersRequest.ItemOrderRequest(findItem2.getId(), 4);
-        SaveOrdersRequest saveOrdersRequest = new SaveOrdersRequest(1L, List.of(itemOrder1, itemOrder2));
+        SaveOrdersRequest saveOrdersRequest = new SaveOrdersRequest(company.getCompanyId(),restaurantTable.getId(), List.of(itemOrder1, itemOrder2));
 
         //when
         SaveOrdersResponse saveOrdersResponse = ordersService.saveOrder(saveOrdersRequest);

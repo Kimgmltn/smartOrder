@@ -41,4 +41,10 @@ public class Orders extends BaseEntity {
     public Orders(Long orderId) {
         this.orderId = orderId;
     }
+
+//    public static create() {
+//        return Orders.builder()
+//                .totalPrice(0)
+//                .build();
+//    }
 }

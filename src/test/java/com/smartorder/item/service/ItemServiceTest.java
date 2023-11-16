@@ -90,4 +90,42 @@ class ItemServiceTest {
         assertThrows(ItemException.class, () -> itemService.findByCategoryIdAndItemName(company.getCompanyId(), categoryId, "된장찌게"));
     }
 
+    @DisplayName("회사Id와 메뉴Id둘을 통해 메뉴를 찾을 수 있다.")
+    @Test
+    void findItemByCompanyIdAndItemIds() {
+        //given
+        SaveCompanyResponse company = companyService.saveCompany(new SaveCompanyRequest("갈비", "도로명"));
+        categoryService.saveCategories(new SaveCategoryRequest(company.getCompanyId(), List.of("갈비", "식사", "음료")));
+        Long categoryId = categoryService.findByCategoryNameAndCompanyId("갈비", company.getCompanyId()).getId();
+
+        SaveItemRequest.SaveItem item1 = new SaveItemRequest.SaveItem("돼지갈비", 17000);
+        SaveItemRequest.SaveItem item2 = new SaveItemRequest.SaveItem("소양념갈비", 19000);
+        SaveItemRequest request = new SaveItemRequest(company.getCompanyId(), categoryId, List.of(item1, item2));
+        itemService.saveItems(request);
+
+        //when
+        List<Item> item = itemService.findByCompanyIdAndItemIds(company.getCompanyId(), List.of(1L, 2L));
+
+        //then
+        assertThat(item.get(0).getId()).isEqualTo(1L);
+    }
+
+    @DisplayName("회사에 해당 메뉴ID가 없을 경우 Error를 발생시킨다.")
+    @Test
+    void noItemIdToError() {
+        //given
+        SaveCompanyResponse company = companyService.saveCompany(new SaveCompanyRequest("갈비", "도로명"));
+        categoryService.saveCategories(new SaveCategoryRequest(company.getCompanyId(), List.of("갈비", "식사", "음료")));
+        Long categoryId = categoryService.findByCategoryNameAndCompanyId("갈비", company.getCompanyId()).getId();
+
+        SaveItemRequest.SaveItem item1 = new SaveItemRequest.SaveItem("돼지갈비", 17000);
+        SaveItemRequest.SaveItem item2 = new SaveItemRequest.SaveItem("소양념갈비", 19000);
+        SaveItemRequest request = new SaveItemRequest(company.getCompanyId(), categoryId, List.of(item1, item2));
+        itemService.saveItems(request);
+
+        //when
+        //then
+        assertThrows(ItemException.class, () -> itemService.findByCompanyIdAndItemIds(company.getCompanyId(), List.of(7L)));
+    }
+
 }
