@@ -3,6 +3,7 @@ package com.smartorder.restaurantTable.service.impl;
 import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
 import com.smartorder.restaurantTable.controller.response.SaveTablesResponse;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
+import com.smartorder.restaurantTable.exception.RestaurantTableException;
 import com.smartorder.restaurantTable.repository.RestaurantTableRepository;
 import com.smartorder.restaurantTable.service.RestaurantTableService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,5 +32,14 @@ public class RestaurantTableServiceImpl implements RestaurantTableService {
         List<RestaurantTable> savedTables = tableRepository.saveAll(tables);
         String replace = text.replace("{count}", String.valueOf(savedTables.size()));
         return new SaveTablesResponse(replace);
+    }
+
+    @Override
+    public RestaurantTable findByCompanyIdAndTableNo(Long companyId, String tableNo) {
+        Optional<RestaurantTable> table = tableRepository.findByCompany_IdAndTableNo(companyId, tableNo);
+        if (!table.isPresent()) {
+            throw new RestaurantTableException("존재하지 않는 테이블입니다.");
+        }
+        return table.get();
     }
 }
