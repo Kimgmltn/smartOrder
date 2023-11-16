@@ -86,7 +86,7 @@ class CategoryServiceTest {
 
     @DisplayName("회사는 존재하지만, 존재하지 않는 categoryName일 경우 error를 발생시킨다.")
     @Test
-    void noCategoryNanmeAndCompanyIdToFail() {
+    void noCategoryNameAndCompanyIdToFail() {
         //given
         SaveCompanyResponse company = companyService.saveCompany(new SaveCompanyRequest("갈비", "도로명주소"));
         SaveCategoryRequest request = new SaveCategoryRequest(company.getCompanyId(), List.of("돼지갈비", "소갈비", "양갈비"));

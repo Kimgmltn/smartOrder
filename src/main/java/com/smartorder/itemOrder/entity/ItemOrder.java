@@ -23,6 +23,8 @@ public class ItemOrder extends BaseEntity {
     private Long itemOrderId;
     @Column(name = "quantity")
     private Integer quantity;
+    @Column(name = "order_seq")
+    private Integer orderSeq;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
