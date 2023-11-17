@@ -1,7 +1,7 @@
 package com.smartorder.category.service.impl;
 
-import com.smartorder.category.controller.request.SaveCategoryRequest;
-import com.smartorder.category.controller.response.SaveCategoryResponse;
+import com.smartorder.category.dto.request.SaveCategoryRequest;
+import com.smartorder.category.dto.response.SaveCategoryResponse;
 import com.smartorder.category.entity.Category;
 import com.smartorder.category.exception.CategoryException;
 import com.smartorder.category.repository.CategoryRepository;

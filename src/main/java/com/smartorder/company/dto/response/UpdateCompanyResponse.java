@@ -1,4 +1,4 @@
-package com.smartorder.company.controller.response;
+package com.smartorder.company.dto.response;
 
 import com.smartorder.company.entity.Company;
 import lombok.*;

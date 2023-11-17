@@ -1,4 +1,4 @@
-package com.smartorder.restaurantTable.controller.response;
+package com.smartorder.item.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class SaveTablesResponse {
+@NoArgsConstructor
+public class SaveItemResponse {
     private String result;
 }

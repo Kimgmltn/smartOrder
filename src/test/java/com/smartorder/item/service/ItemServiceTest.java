@@ -1,21 +1,18 @@
 package com.smartorder.item.service;
 
-import com.smartorder.category.controller.request.SaveCategoryRequest;
-import com.smartorder.category.controller.response.SaveCategoryResponse;
+import com.smartorder.category.dto.request.SaveCategoryRequest;
 import com.smartorder.category.service.CategoryService;
-import com.smartorder.company.controller.request.SaveCompanyRequest;
-import com.smartorder.company.controller.response.SaveCompanyResponse;
+import com.smartorder.company.dto.request.SaveCompanyRequest;
+import com.smartorder.company.dto.response.SaveCompanyResponse;
 import com.smartorder.company.service.CompanyService;
-import com.smartorder.item.controller.request.SaveItemRequest;
-import com.smartorder.item.controller.response.SaveItemResponse;
+import com.smartorder.item.dto.request.SaveItemRequest;
+import com.smartorder.item.dto.response.SaveItemResponse;
 import com.smartorder.item.entity.Item;
 import com.smartorder.item.exception.ItemException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
 

@@ -1,12 +1,10 @@
 package com.smartorder.company.entity;
 
-import com.smartorder.company.controller.request.SaveCompanyRequest;
-import org.assertj.core.api.Assertions;
+import com.smartorder.company.dto.request.SaveCompanyRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class CompanyTest {
 

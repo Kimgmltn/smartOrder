@@ -1,7 +1,7 @@
 package com.smartorder.restaurantTable.service.impl;
 
-import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
-import com.smartorder.restaurantTable.controller.response.SaveTablesResponse;
+import com.smartorder.restaurantTable.dto.request.SaveTablesRequest;
+import com.smartorder.restaurantTable.dto.response.SaveTablesResponse;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
 import com.smartorder.restaurantTable.exception.RestaurantTableException;
 import com.smartorder.restaurantTable.repository.RestaurantTableRepository;

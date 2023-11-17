@@ -1,4 +1,4 @@
-package com.smartorder.restaurantTable.controller.request;
+package com.smartorder.restaurantTable.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

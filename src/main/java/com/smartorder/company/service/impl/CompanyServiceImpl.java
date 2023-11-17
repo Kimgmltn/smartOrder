@@ -1,9 +1,9 @@
 package com.smartorder.company.service.impl;
 
-import com.smartorder.company.controller.request.SaveCompanyRequest;
-import com.smartorder.company.controller.request.UpdateCompanyRequest;
-import com.smartorder.company.controller.response.SaveCompanyResponse;
-import com.smartorder.company.controller.response.UpdateCompanyResponse;
+import com.smartorder.company.dto.request.SaveCompanyRequest;
+import com.smartorder.company.dto.request.UpdateCompanyRequest;
+import com.smartorder.company.dto.response.SaveCompanyResponse;
+import com.smartorder.company.dto.response.UpdateCompanyResponse;
 import com.smartorder.company.entity.Company;
 import com.smartorder.company.exception.CompanyException;
 import com.smartorder.company.repository.CompanyJpaRepository;

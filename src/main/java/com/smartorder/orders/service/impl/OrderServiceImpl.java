@@ -2,9 +2,8 @@ package com.smartorder.orders.service.impl;
 
 import com.smartorder.item.entity.Item;
 import com.smartorder.item.service.ItemService;
-import com.smartorder.orders.controller.request.SaveOrdersRequest;
-import com.smartorder.orders.controller.response.SaveOrdersResponse;
-import com.smartorder.orders.entity.Orders;
+import com.smartorder.orders.dto.request.SaveOrdersRequest;
+import com.smartorder.orders.dto.response.SaveOrdersResponse;
 import com.smartorder.orders.repository.OrdersRepository;
 import com.smartorder.orders.service.OrdersService;
 import com.smartorder.restaurantTable.entity.RestaurantTable;

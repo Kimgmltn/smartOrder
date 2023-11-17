@@ -4,7 +4,7 @@ package com.smartorder.item.entity;
 import com.smartorder.category.entity.Category;
 import com.smartorder.common.entity.BaseEntity;
 import com.smartorder.itemOrder.entity.ItemOrder;
-import com.smartorder.item.controller.request.SaveItemRequest;
+import com.smartorder.item.dto.request.SaveItemRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

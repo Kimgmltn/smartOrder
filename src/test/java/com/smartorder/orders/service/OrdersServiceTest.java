@@ -1,19 +1,18 @@
 package com.smartorder.orders.service;
 
-import com.smartorder.category.controller.request.SaveCategoryRequest;
+import com.smartorder.category.dto.request.SaveCategoryRequest;
 import com.smartorder.category.service.CategoryService;
-import com.smartorder.company.controller.request.SaveCompanyRequest;
-import com.smartorder.company.controller.response.SaveCompanyResponse;
+import com.smartorder.company.dto.request.SaveCompanyRequest;
+import com.smartorder.company.dto.response.SaveCompanyResponse;
 import com.smartorder.company.service.CompanyService;
-import com.smartorder.item.controller.request.SaveItemRequest;
+import com.smartorder.item.dto.request.SaveItemRequest;
 import com.smartorder.item.entity.Item;
 import com.smartorder.item.service.ItemService;
-import com.smartorder.orders.controller.request.SaveOrdersRequest;
-import com.smartorder.orders.controller.response.SaveOrdersResponse;
-import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
+import com.smartorder.orders.dto.request.SaveOrdersRequest;
+import com.smartorder.orders.dto.response.SaveOrdersResponse;
+import com.smartorder.restaurantTable.dto.request.SaveTablesRequest;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
 import com.smartorder.restaurantTable.service.RestaurantTableService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

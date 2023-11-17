@@ -2,7 +2,6 @@ package com.smartorder.category.entity;
 
 import com.smartorder.common.entity.BaseEntity;
 import com.smartorder.company.entity.Company;
-import com.smartorder.category.controller.request.SaveCategoryRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

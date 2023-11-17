@@ -1,10 +1,10 @@
 package com.smartorder.restaurantTable.service;
 
-import com.smartorder.company.controller.request.SaveCompanyRequest;
-import com.smartorder.company.controller.response.SaveCompanyResponse;
+import com.smartorder.company.dto.request.SaveCompanyRequest;
+import com.smartorder.company.dto.response.SaveCompanyResponse;
 import com.smartorder.company.service.CompanyService;
-import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
-import com.smartorder.restaurantTable.controller.response.SaveTablesResponse;
+import com.smartorder.restaurantTable.dto.request.SaveTablesRequest;
+import com.smartorder.restaurantTable.dto.response.SaveTablesResponse;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
 import com.smartorder.restaurantTable.exception.RestaurantTableException;
 import org.junit.jupiter.api.Assertions;

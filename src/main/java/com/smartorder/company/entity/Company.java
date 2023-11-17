@@ -2,8 +2,8 @@ package com.smartorder.company.entity;
 
 import com.smartorder.category.entity.Category;
 import com.smartorder.common.entity.BaseEntity;
-import com.smartorder.company.controller.request.SaveCompanyRequest;
-import com.smartorder.company.controller.request.UpdateCompanyRequest;
+import com.smartorder.company.dto.request.SaveCompanyRequest;
+import com.smartorder.company.dto.request.UpdateCompanyRequest;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

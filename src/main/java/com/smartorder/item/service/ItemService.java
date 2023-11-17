@@ -1,7 +1,7 @@
 package com.smartorder.item.service;
 
-import com.smartorder.item.controller.request.SaveItemRequest;
-import com.smartorder.item.controller.response.SaveItemResponse;
+import com.smartorder.item.dto.request.SaveItemRequest;
+import com.smartorder.item.dto.response.SaveItemResponse;
 import com.smartorder.item.entity.Item;
 
 import java.util.List;

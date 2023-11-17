@@ -1,7 +1,7 @@
 package com.smartorder.category.service;
 
-import com.smartorder.category.controller.request.SaveCategoryRequest;
-import com.smartorder.category.controller.response.SaveCategoryResponse;
+import com.smartorder.category.dto.request.SaveCategoryRequest;
+import com.smartorder.category.dto.response.SaveCategoryResponse;
 import com.smartorder.category.entity.Category;
 
 public interface CategoryService {

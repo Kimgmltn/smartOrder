@@ -1,7 +1,7 @@
 package com.smartorder.company.controller;
 
-import com.smartorder.company.controller.request.SaveCompanyRequest;
-import com.smartorder.company.controller.request.UpdateCompanyRequest;
+import com.smartorder.company.dto.request.SaveCompanyRequest;
+import com.smartorder.company.dto.request.UpdateCompanyRequest;
 import com.smartorder.company.service.CompanyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

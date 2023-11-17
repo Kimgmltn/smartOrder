@@ -1,6 +1,6 @@
 package com.smartorder.restaurantTable.controller;
 
-import com.smartorder.restaurantTable.controller.request.SaveTablesRequest;
+import com.smartorder.restaurantTable.dto.request.SaveTablesRequest;
 import com.smartorder.restaurantTable.service.RestaurantTableService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

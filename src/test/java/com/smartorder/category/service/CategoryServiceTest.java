@@ -2,11 +2,11 @@ package com.smartorder.category.service;
 
 import com.smartorder.category.entity.Category;
 import com.smartorder.category.exception.CategoryException;
-import com.smartorder.company.controller.request.SaveCompanyRequest;
-import com.smartorder.company.controller.response.SaveCompanyResponse;
+import com.smartorder.company.dto.request.SaveCompanyRequest;
+import com.smartorder.company.dto.response.SaveCompanyResponse;
 import com.smartorder.company.service.CompanyService;
-import com.smartorder.category.controller.request.SaveCategoryRequest;
-import com.smartorder.category.controller.response.SaveCategoryResponse;
+import com.smartorder.category.dto.request.SaveCategoryRequest;
+import com.smartorder.category.dto.response.SaveCategoryResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

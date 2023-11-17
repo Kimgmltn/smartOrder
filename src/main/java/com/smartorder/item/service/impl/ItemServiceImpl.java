@@ -2,8 +2,8 @@ package com.smartorder.item.service.impl;
 
 import com.smartorder.category.entity.Category;
 import com.smartorder.category.service.CategoryService;
-import com.smartorder.item.controller.request.SaveItemRequest;
-import com.smartorder.item.controller.response.SaveItemResponse;
+import com.smartorder.item.dto.request.SaveItemRequest;
+import com.smartorder.item.dto.response.SaveItemResponse;
 import com.smartorder.item.entity.Item;
 import com.smartorder.item.exception.ItemException;
 import com.smartorder.item.repository.ItemRepository;

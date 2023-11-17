@@ -1,4 +1,4 @@
-package com.smartorder.category.controller.request;
+package com.smartorder.category.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.smartorder.orders.service;
 
-import com.smartorder.orders.controller.request.SaveOrdersRequest;
-import com.smartorder.orders.controller.response.SaveOrdersResponse;
+import com.smartorder.orders.dto.request.SaveOrdersRequest;
+import com.smartorder.orders.dto.response.SaveOrdersResponse;
 
 public interface OrdersService {
 

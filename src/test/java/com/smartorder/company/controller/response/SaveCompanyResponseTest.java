@@ -1,12 +1,11 @@
 package com.smartorder.company.controller.response;
 
+import com.smartorder.company.dto.response.SaveCompanyResponse;
 import com.smartorder.company.entity.Company;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class SaveCompanyResponseTest {
 

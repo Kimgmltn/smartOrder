@@ -1,4 +1,4 @@
-package com.smartorder.category.controller.response;
+package com.smartorder.category.dto.response;
 
 import lombok.*;
 
