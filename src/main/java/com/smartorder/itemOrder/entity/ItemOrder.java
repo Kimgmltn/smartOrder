@@ -20,7 +20,7 @@ public class ItemOrder extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "item_order_id")
-    private Long itemOrderId;
+    private Long id;
     @Column(name = "quantity")
     private Integer quantity;
     @Column(name = "order_seq")
@@ -34,4 +34,11 @@ public class ItemOrder extends BaseEntity {
     @JoinColumn(name = "order_id")
     private Orders orders;
 
+    public static ItemOrder create(Long itemId, Integer quantity) {
+        return ItemOrder.builder()
+                .item(new Item(itemId))
+                .quantity(quantity)
+                .orderSeq(1)
+                .build();
+    }
 }

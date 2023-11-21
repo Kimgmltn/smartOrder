@@ -20,8 +20,9 @@ public class SaveOrdersResponse {
     @Getter
     @Setter
     public static class ItemOrderResponse {
-        private Long itemName;
-        private int price;
+        private String itemName;
+        private Integer price;
         private Integer quantity;
+        private Integer orderSeq;
     }
 }

@@ -2,6 +2,7 @@ package com.smartorder.orders.service.impl;
 
 import com.smartorder.item.entity.Item;
 import com.smartorder.item.service.ItemService;
+import com.smartorder.itemOrder.entity.ItemOrder;
 import com.smartorder.orders.dto.request.SaveOrdersRequest;
 import com.smartorder.orders.dto.response.SaveOrdersResponse;
 import com.smartorder.orders.entity.Orders;
@@ -33,13 +34,18 @@ public class OrderServiceImpl implements OrdersService {
         Long companyId = request.getCompanyId();
         List<SaveOrdersRequest.ItemOrderRequest> itemOrderRequests = request.getItemOrderRequests();
         List<Long> itemIds = itemOrderRequests.stream().map(req -> req.getItemId()).collect(Collectors.toList());
-        Map<Long, Integer> itemMap = itemOrderRequests.stream().collect(Collectors.toMap(item -> item.getItemId(), item -> item.getQuantity()));
 
         RestaurantTable table = tableService.findByCompanyIdAndTableId(companyId, request.getTableId());
         List<Item> items = itemService.findByCompanyIdAndItemIds(companyId, itemIds);
-        items.stream().map(item -> Orders.create(table.getId(), item, itemMap)).collect(Collectors.toList());
+        Map<Long, Integer> itemPriceMap = items.stream().collect(Collectors.toMap(Item::getId, Item::getPrice));
 
+        List<ItemOrder> itemOrders = itemOrderRequests.stream().map(req -> ItemOrder.create(req.getItemId(), req.getQuantity())).collect(Collectors.toList());
+        Orders orders = Orders.create(table, itemOrders, itemPriceMap);
+        Orders savedOrders = ordersRepository.save(orders);
 
-        return null;
+        List<SaveOrdersResponse.ItemOrderResponse> itemOrderResponses = savedOrders.getItemOrders().stream()
+                .map(req -> new SaveOrdersResponse.ItemOrderResponse(req.getItem().getItemName(), req.getItem().getPrice(), req.getQuantity(), req.getOrderSeq()))
+                .collect(Collectors.toList());
+        return new SaveOrdersResponse(savedOrders.getTotalPrice(), itemOrderResponses);
     }
 }

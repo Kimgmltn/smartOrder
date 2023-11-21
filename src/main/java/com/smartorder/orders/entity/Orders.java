@@ -1,9 +1,7 @@
 package com.smartorder.orders.entity;
 
 import com.smartorder.common.entity.BaseEntity;
-import com.smartorder.item.entity.Item;
 import com.smartorder.itemOrder.entity.ItemOrder;
-import com.smartorder.orders.dto.request.SaveOrdersRequest;
 import com.smartorder.orders.enums.OrderStatus;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
 import jakarta.persistence.*;
@@ -14,7 +12,6 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,12 +43,16 @@ public class Orders extends BaseEntity {
         this.orderId = orderId;
     }
 
-    public static Orders create(Long tableId, Item item, Map<Long, Integer> itemMap) {
-        int calculatedTotalPrice = item.getPrice() * itemMap.get(item.getId());
+    public static Orders create(RestaurantTable table, List<ItemOrder> itemOrders, Map<Long, Integer> itemPriceMap) {
+
+        int calculatedTotalPrice = itemOrders.stream().map(req -> req.getQuantity() * itemPriceMap.get(req.getItem().getId())).reduce(0, Integer::sum);
+
         return Orders.builder()
-                .table(new RestaurantTable(tableId))
+                .table(table)
                 .totalPrice(calculatedTotalPrice)
+                .itemOrders(itemOrders)
                 .orderStatus(OrderStatus.USE)
                 .build();
     }
+
 }

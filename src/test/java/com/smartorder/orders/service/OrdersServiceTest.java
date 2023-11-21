@@ -63,5 +63,7 @@ class OrdersServiceTest {
 
         //then
         assertThat(saveOrdersResponse).isNotNull();
+        assertThat(saveOrdersResponse.getTotalPrice()).isEqualTo((17000*2) + (19000*4));
+        assertThat(saveOrdersResponse.getItems().size()).isEqualTo(2);
     }
 }
