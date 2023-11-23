@@ -5,13 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-import java.util.Map;
-
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SaveOrdersRequest {
-    private List<ItemOrderRequest> itemOrderRequests;
+@Getter
+@Setter
+public class ItemOrderRequest {
+    private Long itemId;
+    private Integer quantity;
 }

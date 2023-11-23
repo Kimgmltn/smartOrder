@@ -9,14 +9,12 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class OrdersTest {
     @DisplayName("Orders.create()로 Orders 객체를 생성할 수 있다.")
     @Test
     void crate(){
         RestaurantTable table = new RestaurantTable(1L);
-        List<ItemOrder> itemOrders = List.of(ItemOrder.create(1L, 2), ItemOrder.create(2L, 3));
+        List<ItemOrder> itemOrders = List.of(ItemOrder.create(1L, 2, maxOrderSeq + 1), ItemOrder.create(2L, 3, maxOrderSeq + 1));
         Map<Long, Integer> itemPriceMap = Map.of(1L, 2000, 2L, 3000);
 
         Orders orders = Orders.create(table, itemOrders, itemPriceMap);

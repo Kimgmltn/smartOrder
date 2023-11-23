@@ -25,7 +25,7 @@ public class Orders extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id")
-    private Long orderId;
+    private Long id;
 
     @Column(name="total_price")
     private Integer totalPrice;
@@ -40,12 +40,12 @@ public class Orders extends BaseEntity {
     private List<ItemOrder> itemOrders = new ArrayList<>();
 
     public Orders(Long orderId) {
-        this.orderId = orderId;
+        this.id = orderId;
     }
 
     public static Orders create(RestaurantTable table, List<ItemOrder> itemOrders, Map<Long, Integer> itemPriceMap) {
 
-        int calculatedTotalPrice = itemOrders.stream().map(req -> req.getQuantity() * itemPriceMap.get(req.getItem().getId())).reduce(0, Integer::sum);
+        int calculatedTotalPrice = getCalculatedTotalPrice(itemOrders, itemPriceMap);
 
         return Orders.builder()
                 .table(table)
@@ -55,4 +55,14 @@ public class Orders extends BaseEntity {
                 .build();
     }
 
+    private static int getCalculatedTotalPrice(List<ItemOrder> itemOrders, Map<Long, Integer> itemPriceMap) {
+        int calculatedTotalPrice = itemOrders.stream().map(req -> req.getQuantity() * itemPriceMap.get(req.getItem().getId())).reduce(0, Integer::sum);
+        return calculatedTotalPrice;
+    }
+
+    public void addOrder(List<ItemOrder> itemOrders, Map<Long, Integer> itemPriceMap) {
+        int calculatedTotalPrice = itemOrders.stream().map(req -> req.getQuantity() * itemPriceMap.get(req.getItem().getId())).reduce(0, Integer::sum);
+        this.totalPrice = this.totalPrice + calculatedTotalPrice;
+        this.getItemOrders().addAll(itemOrders);
+    }
 }

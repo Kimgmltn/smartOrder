@@ -34,11 +34,11 @@ public class ItemOrder extends BaseEntity {
     @JoinColumn(name = "order_id")
     private Orders orders;
 
-    public static ItemOrder create(Long itemId, Integer quantity) {
+    public static ItemOrder create(Long itemId, Integer quantity, int i) {
         return ItemOrder.builder()
                 .item(new Item(itemId))
                 .quantity(quantity)
-                .orderSeq(1)
+                .orderSeq(i)
                 .build();
     }
 }
