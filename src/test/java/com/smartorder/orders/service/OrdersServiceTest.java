@@ -12,6 +12,7 @@ import com.smartorder.orders.dto.request.AddOrdersRequest;
 import com.smartorder.orders.dto.request.ItemOrderRequest;
 import com.smartorder.orders.dto.request.SaveOrdersRequest;
 import com.smartorder.orders.dto.response.AddOrdersResponse;
+import com.smartorder.orders.dto.response.ItemOrderResponse;
 import com.smartorder.orders.dto.response.SaveOrdersResponse;
 import com.smartorder.restaurantTable.dto.request.SaveTablesRequest;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
@@ -102,6 +103,8 @@ class OrdersServiceTest {
 
         //then
         assertThat(addOrderResponses).isNotNull();
+        assertThat(addOrderResponses.getItems().size()).isEqualTo(3);
+        assertThat(addOrderResponses.getItems().stream().map(ItemOrderResponse::getOrderSeq).max(Integer::compare).get()).isEqualTo(2);
     }
 
 }

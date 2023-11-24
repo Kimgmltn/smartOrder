@@ -5,14 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddOrdersResponse {
-    private Long orderId;
-    private int totalPrice;
-    private List<ItemOrderResponse> items;
+public class ItemOrderResponse {
+    private String itemName;
+    private Integer price;
+    private Integer quantity;
+    private Integer orderSeq;
 }

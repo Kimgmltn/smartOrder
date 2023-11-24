@@ -14,6 +14,7 @@ class OrdersTest {
     @Test
     void crate(){
         RestaurantTable table = new RestaurantTable(1L);
+        int maxOrderSeq= 0;
         List<ItemOrder> itemOrders = List.of(ItemOrder.create(1L, 2, maxOrderSeq + 1), ItemOrder.create(2L, 3, maxOrderSeq + 1));
         Map<Long, Integer> itemPriceMap = Map.of(1L, 2000, 2L, 3000);
 

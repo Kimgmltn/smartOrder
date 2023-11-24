@@ -19,7 +19,7 @@ import java.util.Map;
 @Table(name="orders")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@SuperBuilder
+@SuperBuilder()
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Orders extends BaseEntity {
     @Id
@@ -47,12 +47,19 @@ public class Orders extends BaseEntity {
 
         int calculatedTotalPrice = getCalculatedTotalPrice(itemOrders, itemPriceMap);
 
-        return Orders.builder()
+        Orders order = Orders.builder()
                 .table(table)
                 .totalPrice(calculatedTotalPrice)
-                .itemOrders(itemOrders)
+                .itemOrders(new ArrayList<>())
                 .orderStatus(OrderStatus.USE)
                 .build();
+
+        for (ItemOrder itemOrder : itemOrders) {
+            itemOrder.setOrders(order);
+            order.getItemOrders().add(itemOrder);
+        }
+
+        return order;
     }
 
     private static int getCalculatedTotalPrice(List<ItemOrder> itemOrders, Map<Long, Integer> itemPriceMap) {
@@ -63,6 +70,9 @@ public class Orders extends BaseEntity {
     public void addOrder(List<ItemOrder> itemOrders, Map<Long, Integer> itemPriceMap) {
         int calculatedTotalPrice = itemOrders.stream().map(req -> req.getQuantity() * itemPriceMap.get(req.getItem().getId())).reduce(0, Integer::sum);
         this.totalPrice = this.totalPrice + calculatedTotalPrice;
-        this.getItemOrders().addAll(itemOrders);
+        for (ItemOrder itemOrder : itemOrders) {
+            itemOrder.setOrders(this);
+            this.getItemOrders().add(itemOrder);
+        }
     }
 }

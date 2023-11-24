@@ -41,4 +41,8 @@ public class ItemOrder extends BaseEntity {
                 .orderSeq(i)
                 .build();
     }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
 }
