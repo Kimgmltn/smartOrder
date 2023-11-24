@@ -63,8 +63,7 @@ public class Orders extends BaseEntity {
     }
 
     private static int getCalculatedTotalPrice(List<ItemOrder> itemOrders, Map<Long, Integer> itemPriceMap) {
-        int calculatedTotalPrice = itemOrders.stream().map(req -> req.getQuantity() * itemPriceMap.get(req.getItem().getId())).reduce(0, Integer::sum);
-        return calculatedTotalPrice;
+        return itemOrders.stream().map(req -> req.getQuantity() * itemPriceMap.get(req.getItem().getId())).reduce(0, Integer::sum);
     }
 
     public void addOrder(List<ItemOrder> itemOrders, Map<Long, Integer> itemPriceMap) {
