@@ -11,12 +11,12 @@ import com.smartorder.item.service.ItemService;
 import com.smartorder.orders.dto.request.AddOrdersRequest;
 import com.smartorder.orders.dto.request.ItemOrderRequest;
 import com.smartorder.orders.dto.request.SaveOrdersRequest;
-import com.smartorder.orders.dto.response.AddOrdersResponse;
 import com.smartorder.orders.dto.response.ItemOrderResponse;
-import com.smartorder.orders.dto.response.SaveOrdersResponse;
+import com.smartorder.orders.dto.response.OrderListResponse;
 import com.smartorder.restaurantTable.dto.request.SaveTablesRequest;
 import com.smartorder.restaurantTable.entity.RestaurantTable;
 import com.smartorder.restaurantTable.service.RestaurantTableService;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +63,7 @@ class OrdersServiceTest {
         SaveOrdersRequest saveOrdersRequest = new SaveOrdersRequest(List.of(itemOrder1, itemOrder2));
 
         //when
-        SaveOrdersResponse saveOrdersResponse = ordersService.saveOrder(company.getCompanyId(), restaurantTable.getId(), saveOrdersRequest);
+        OrderListResponse saveOrdersResponse = ordersService.saveOrder(company.getCompanyId(), restaurantTable.getId(), saveOrdersRequest);
 
         //then
         assertThat(saveOrdersResponse).isNotNull();
@@ -92,14 +92,14 @@ class OrdersServiceTest {
         ItemOrderRequest itemOrder1 = new ItemOrderRequest(findItem1.getId(), 2);
         ItemOrderRequest itemOrder2 = new ItemOrderRequest(findItem2.getId(), 4);
         SaveOrdersRequest saveOrdersRequest = new SaveOrdersRequest(List.of(itemOrder1, itemOrder2));
-        SaveOrdersResponse saveOrdersResponse = ordersService.saveOrder(company.getCompanyId(), restaurantTable.getId(), saveOrdersRequest);
+        OrderListResponse saveOrdersResponse = ordersService.saveOrder(company.getCompanyId(), restaurantTable.getId(), saveOrdersRequest);
 
 
         ItemOrderRequest itemOrder3 = new ItemOrderRequest(findItem1.getId(), 5);
         AddOrdersRequest addOrdersRequest = new AddOrdersRequest(saveOrdersResponse.getOrderId(), List.of(itemOrder3));
 
         //when
-        AddOrdersResponse addOrderResponses = ordersService.addOrder(company.getCompanyId(), restaurantTable.getId(), saveOrdersResponse.getOrderId(), addOrdersRequest);
+        OrderListResponse addOrderResponses = ordersService.addOrder(company.getCompanyId(), restaurantTable.getId(), saveOrdersResponse.getOrderId(), addOrdersRequest);
 
         //then
         assertThat(addOrderResponses).isNotNull();

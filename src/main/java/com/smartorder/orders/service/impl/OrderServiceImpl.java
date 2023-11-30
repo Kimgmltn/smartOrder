@@ -6,9 +6,8 @@ import com.smartorder.itemOrder.entity.ItemOrder;
 import com.smartorder.orders.dto.request.AddOrdersRequest;
 import com.smartorder.orders.dto.request.ItemOrderRequest;
 import com.smartorder.orders.dto.request.SaveOrdersRequest;
-import com.smartorder.orders.dto.response.AddOrdersResponse;
 import com.smartorder.orders.dto.response.ItemOrderResponse;
-import com.smartorder.orders.dto.response.SaveOrdersResponse;
+import com.smartorder.orders.dto.response.OrderListResponse;
 import com.smartorder.orders.entity.Orders;
 import com.smartorder.orders.exception.OrdersException;
 import com.smartorder.orders.repository.OrdersRepository;
@@ -35,7 +34,7 @@ public class OrderServiceImpl implements OrdersService {
 
     @Override
     @Transactional
-    public SaveOrdersResponse saveOrder(Long companyId, Long tableId, SaveOrdersRequest request) {
+    public OrderListResponse saveOrder(Long companyId, Long tableId, SaveOrdersRequest request) {
         List<ItemOrderRequest> itemOrderRequests = request.getItemOrderRequests();
         List<Long> itemIds = itemOrderRequests.stream().map(ItemOrderRequest::getItemId).collect(Collectors.toList());
 
@@ -49,12 +48,12 @@ public class OrderServiceImpl implements OrdersService {
         List<ItemOrderResponse> itemOrderResponses = savedOrders.getItemOrders().stream()
                 .map(req -> new ItemOrderResponse(req.getItem().getItemName(), req.getItem().getPrice(), req.getQuantity(), req.getOrderSeq()))
                 .collect(Collectors.toList());
-        return new SaveOrdersResponse(orders.getId(), savedOrders.getTotalPrice(), itemOrderResponses);
+        return new OrderListResponse(orders.getId(), savedOrders.getTotalPrice(), itemOrderResponses);
     }
 
     @Override
     @Transactional
-    public AddOrdersResponse addOrder(Long companyId, Long tableId, Long orderId, AddOrdersRequest request) {
+    public OrderListResponse addOrder(Long companyId, Long tableId, Long orderId, AddOrdersRequest request) {
         Optional<Orders> ordersOptional = ordersRepository.findById(orderId);
         if(ordersOptional.isEmpty()){
             throw new OrdersException("존재하지 않는 주문입니다.");
@@ -74,7 +73,12 @@ public class OrderServiceImpl implements OrdersService {
 
         List<ItemOrderResponse> itemOrderResponses = order.getItemOrders().stream().map(item -> new ItemOrderResponse(item.getItem().getItemName(), item.getItem().getPrice(), item.getQuantity(), item.getOrderSeq())).collect(Collectors.toList());
 
-        return new AddOrdersResponse(order.getId(), order.getTotalPrice(), itemOrderResponses);
+        return new OrderListResponse(order.getId(), order.getTotalPrice(), itemOrderResponses);
+    }
+
+    @Override
+    public OrderListResponse findUseOrderList(Long orderId) {
+        return null;
     }
 
     private Map<Long, Integer> getItemPriceMap(Long companyId, List<Long> itemIds) {

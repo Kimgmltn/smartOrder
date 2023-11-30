@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddOrdersResponse {
+public class OrderListResponse {
     private Long orderId;
     private int totalPrice;
     private List<ItemOrderResponse> items;
