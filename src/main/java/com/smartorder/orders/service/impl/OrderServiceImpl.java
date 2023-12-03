@@ -3,6 +3,7 @@ package com.smartorder.orders.service.impl;
 import com.smartorder.item.entity.Item;
 import com.smartorder.item.service.ItemService;
 import com.smartorder.itemOrder.entity.ItemOrder;
+import com.smartorder.itemOrder.repository.ItemOrderRepository;
 import com.smartorder.orders.dto.request.AddOrdersRequest;
 import com.smartorder.orders.dto.request.ItemOrderRequest;
 import com.smartorder.orders.dto.request.SaveOrdersRequest;
@@ -31,6 +32,7 @@ public class OrderServiceImpl implements OrdersService {
     private final OrdersRepository ordersRepository;
     private final RestaurantTableService tableService;
     private final ItemService itemService;
+    private final ItemOrderRepository itemOrderRepository;
 
     @Override
     @Transactional
@@ -78,7 +80,10 @@ public class OrderServiceImpl implements OrdersService {
 
     @Override
     public OrderListResponse findUseOrderList(Long orderId) {
-        return null;
+        OrderListResponse orderListResponse = ordersRepository.findUseOrderListByOrderId(orderId);
+        List<ItemOrderResponse> itemOrderResponses = itemOrderRepository.findUseItemOrderListByOrderId(orderId);
+        orderListResponse.setItems(itemOrderResponses);
+        return orderListResponse;
     }
 
     private Map<Long, Integer> getItemPriceMap(Long companyId, List<Long> itemIds) {
