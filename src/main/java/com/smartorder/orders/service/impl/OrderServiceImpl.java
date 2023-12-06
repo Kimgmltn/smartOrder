@@ -80,10 +80,7 @@ public class OrderServiceImpl implements OrdersService {
 
     @Override
     public OrderListResponse findUseOrderList(Long orderId) {
-        OrderListResponse orderListResponse = ordersRepository.findUseOrderListByOrderId(orderId);
-        List<ItemOrderResponse> itemOrderResponses = itemOrderRepository.findUseItemOrderListByOrderId(orderId);
-        orderListResponse.setItems(itemOrderResponses);
-        return orderListResponse;
+        return ordersRepository.findUseOrderListByOrderId(orderId);
     }
 
     private Map<Long, Integer> getItemPriceMap(Long companyId, List<Long> itemIds) {
