@@ -37,6 +37,11 @@ public class RestaurantTable extends BaseEntity {
         this.id = tableId;
     }
 
+    public RestaurantTable(Long companyId, Long tableId){
+        this.id = tableId;
+        this.company = new Company(companyId);
+    }
+
     public static RestaurantTable create(Long companyId, String tableNo) {
         return RestaurantTable.builder()
                 .tableNo(tableNo)

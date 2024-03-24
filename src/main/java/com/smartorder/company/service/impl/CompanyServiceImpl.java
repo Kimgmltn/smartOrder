@@ -35,14 +35,13 @@ public class CompanyServiceImpl implements CompanyService {
     public UpdateCompanyResponse updateCompany(UpdateCompanyRequest request) {
         Company company = Company.updateCompany(request);
         Company updatedCompany = companyRepository.save(company);
-        UpdateCompanyResponse response = UpdateCompanyResponse.fromEntityToResponse(updatedCompany);
-        return response;
+        return UpdateCompanyResponse.fromEntityToResponse(updatedCompany);
     }
 
     @Override
     public Company findById(Long companyId) {
         Optional<Company> company = companyRepository.findById(companyId);
-        if(!company.isPresent()){
+        if(company.isEmpty()){
             throw new CompanyException("존재하지 않는 회사입니다.");
         }
         return company.get();
