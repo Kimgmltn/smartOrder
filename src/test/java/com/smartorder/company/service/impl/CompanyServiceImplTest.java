@@ -5,6 +5,9 @@ import com.smartorder.company.dto.request.UpdateCompanyRequest;
 import com.smartorder.company.dto.response.SaveCompanyResponse;
 import com.smartorder.company.dto.response.UpdateCompanyResponse;
 import com.smartorder.company.exception.CompanyException;
+import com.smartorder.company.repository.CompanyJpaRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +21,30 @@ class CompanyServiceImplTest {
 
     @Autowired
     private CompanyServiceImpl companyService;
+    @Autowired
+    private CompanyJpaRepository companyJpaRepository;
+
+    private SaveCompanyRequest saveCompanyRequest;
+    private SaveCompanyResponse savedCompany;
+
+    @BeforeEach
+    void setUp(){
+        saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
+        savedCompany = companyService.saveCompany(saveCompanyRequest);
+    }
+    @AfterEach
+    void end(){
+        companyJpaRepository.deleteById(savedCompany.getCompanyId());
+    }
 
     @DisplayName("SaveCompanyRequest를 통해 회사를 등록할 수 있다.")
     @Test
     void saveCompany() {
         //given
-        SaveCompanyRequest saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
+//        SaveCompanyRequest saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
 
         //when
-        SaveCompanyResponse response = companyService.saveCompany(saveCompanyRequest);
+        SaveCompanyResponse response = savedCompany;
 
         //then
         assertThat(response.getCompanyId()).isNotNull();
@@ -38,8 +56,9 @@ class CompanyServiceImplTest {
     @Test
     void updateCompanyInfoOnlyCompanyName() {
         //given
-        SaveCompanyRequest saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
-        SaveCompanyResponse savedCompany = companyService.saveCompany(saveCompanyRequest);
+//        SaveCompanyRequest saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
+//        SaveCompanyResponse savedCompany = companyService.saveCompany(saveCompanyRequest);
+//        UpdateCompanyRequest updateRequest = new UpdateCompanyRequest(savedCompany.getCompanyId(), "갈비2", "도로명 주소");
         UpdateCompanyRequest updateRequest = new UpdateCompanyRequest(savedCompany.getCompanyId(), "갈비2", "도로명 주소");
 
         //when
@@ -55,8 +74,8 @@ class CompanyServiceImplTest {
     @Test
     void updateCompanyInfoOnlyRoadNameAddress() {
         //given
-        SaveCompanyRequest saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
-        SaveCompanyResponse savedCompany = companyService.saveCompany(saveCompanyRequest);
+//        SaveCompanyRequest saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
+//        SaveCompanyResponse savedCompany = companyService.saveCompany(saveCompanyRequest);
         UpdateCompanyRequest updateRequest = new UpdateCompanyRequest(savedCompany.getCompanyId(), "갈비", "도로명 주소2");
 
         //when
@@ -72,8 +91,8 @@ class CompanyServiceImplTest {
     @Test
     void updateCompanyInfoCompanyNameAndRoadNameAddress() {
         //given
-        SaveCompanyRequest saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
-        SaveCompanyResponse savedCompany = companyService.saveCompany(saveCompanyRequest);
+//        SaveCompanyRequest saveCompanyRequest = new SaveCompanyRequest("갈비", "도로명 주소");
+//        SaveCompanyResponse savedCompany = companyService.saveCompany(saveCompanyRequest);
         UpdateCompanyRequest updateRequest = new UpdateCompanyRequest(savedCompany.getCompanyId(), "갈비2", "도로명 주소2");
 
         //when
@@ -89,7 +108,7 @@ class CompanyServiceImplTest {
     @Test
     void test() {
         //given
-        Long companyId = 2L;
+        Long companyId = 10000L;
 
         //when
         //then
